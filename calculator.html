@@ -1,0 +1,74 @@
+<html>
+<head>
+<style>
+    table,tr,td{
+        border:solid 1px #000;
+    }     
+    td {
+        width:70px;
+        cursor: pointer;
+    }
+    
+    input {
+        width:100%;
+    }
+    
+</style>
+<script>
+    
+    
+    function calculate(buttonPressed){
+        
+        console.log(buttonPressed.innerText); //to see how it works
+        
+        //buttonPressed is equal to the keyword 'this'
+        
+        var decimalAdded = document.getElementById('screen').value;
+        
+        //we can use this or event to do this dynamically
+        if (buttonPressed.innerText == '='){
+          document.getElementById('screen').value = eval( document.getElementById('screen').value);
+        }
+        else if (buttonPressed.innerText == 'C') {
+            document.getElementById('screen').value = "";
+        }
+        else if (buttonPressed.innerText == '.' && decimalAdded.indexOf('.') >= 0) {
+            alert("please enter a valid number");
+        }
+        else {
+        var num = buttonPressed.innerText;
+        document.getElementById('screen').value += num;
+        //console.log(evt.target.innerText);        
+        }
+    }
+   
+</script>    
+    
+</head>
+<body>
+<table>
+<tr><td colspan="4"><input type="text" id="screen" disabled="disabled"> </td></tr>
+<tr><td colspan="3"></td><td onclick="calculate(this);">C</td></tr>
+    
+<tr><td onclick="calculate(this);">1</td>
+<td onclick="calculate(this);">2</td>
+<td onclick="calculate(this);">3</td>
+<td onclick="calculate(this);">+</td></tr>
+
+<tr><td onclick="calculate(this);">4</td>
+<td onclick="calculate(this);">5</td>
+<td onclick="calculate(this);">6</td>
+<td onclick="calculate(this);">-</td></tr>
+
+<tr><td onclick="calculate(this);">7</td>
+<td onclick="calculate(this);">8</td>
+<td onclick="calculate(this);">9</td>
+<td onclick="calculate(this);">*</td></tr>
+
+<tr><td onclick="calculate(this);">.</td>
+<td onclick="calculate(this);">0</td>
+<td onclick="calculate(this);">=</td>
+<td onclick="calculate(this);">/</td></tr>
+</table>    
+</body>
+</html>
